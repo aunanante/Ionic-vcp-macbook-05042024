@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openUpdateDetailModalPage()" color="primary">
+        Edit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <!-- Commerces List -->
+  <ion-grid class="grid-container">
+    <ion-row>
+      <ion-col size="6" class="column">
+        commerces
+      </ion-col>
+      <ion-col size="6" class="column">
+        categories
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="commerces.length > 0" class="list" aria-label="Commerces List">
+            <ion-item *ngFor="let commerce of commerces" class="item" [class.selected-commerce]="commerce.id === selectedCommerceId" (click)="onCommerceClick(commerce.id)">
+              {{ commerce.commercename }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no commerces found -->
+          <div *ngIf="commerces.length === 0" class="no-commerces-message">
+            <p>No commerces found.</p>
+          </div>
+        </div>
+      </ion-col>
+
+      <!-- Categories List -->
+      <ion-col size="6" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="categories.length > 0" class="list" aria-label="Categories List">
+            <ion-item *ngFor="let category of categories" class="item" [class.selected-category]="category.id === selectedCategoryId" (click)="onCategoryClick(category)">
+              {{ category.categoryname }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no categories found -->
+          <div *ngIf="categories.length === 0" class="no-categories-message">
+            <p>No categories found.</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Products and Details Lists -->
+  <ion-grid class="grid-container">
+    <ion-row>
+      <ion-col size="12" class="column">
+        products
+      </ion-col>
+      
+    </ion-row> 
+    <ion-row *ngIf="products.length > 0">
+      <!-- Products List -->
+      <ion-col size="12" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="products.length > 0" class="list" aria-label="Products List">
+            <ion-item *ngFor="let product of products" class="item" [class.selected-product]="product.id === selectedProductId" (click)="onProductClick(product.id)">
+              {{ product.productname }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no products found -->
+          <div *ngIf="products.length === 0" class="no-products-message">
+            <p>No products found.</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="column">
+        details
+      </ion-col>
+      
+    </ion-row>
+    <ion-row>
+      <!-- Details List -->
+      <ion-col size="12" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="details.length > 0" class="list" aria-label="Details List">
+            <ion-item *ngFor="let detail of details" class="item" [class.selected-detail]="detail.id === selectedDetailId" (click)="onDetailClick(detail)">
+              {{ detail.detailname }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no details found -->
+          <div *ngIf="details.length === 0" class="no-details-message">
+            <p>No details found.</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Form for Selected Detail -->
+  <form [formGroup]="detailForm" *ngIf="selectedDetailId">
+    <ion-item>
+      <!-- Use ion-img to display the image -->
+      <ion-img [src]="detailForm.get('image_detail')?.value"></ion-img>
+    </ion-item>
+    <ion-item>
+      <ion-label>Detail Name : </ion-label>
+      <ion-input formControlName="detailname" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description : </ion-label>
+      <ion-textarea formControlName="description" readonly></ion-textarea>
+    </ion-item>
+  </form>
+
+  <!-- Fab button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openDetailAddModalPage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

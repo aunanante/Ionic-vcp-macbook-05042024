@@ -1,0 +1,28 @@
+<!-- villes-modal.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Villes Modal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="onSearch($event)" placeholder="Search Villes"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let ville of filteredVillesList" (click)="selectVille(ville)">
+      {{ ville.villename }}
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- Add a "Cancel" button to close the modal without selecting a ville -->
+    <ion-button (click)="dismissModal()" color="medium" slot="end">
+      Cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

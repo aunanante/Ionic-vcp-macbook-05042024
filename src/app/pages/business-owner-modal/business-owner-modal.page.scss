@@ -1,0 +1,23 @@
+.column-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px; /* Adjust as needed */
+    height: 80px; /* Adjust as needed */
+    border-radius: 50%;
+    background-color: #ccc; /* Circle background color */
+  }
+  
+  .contact-icon {
+    font-size: 48px; /* Adjust as needed */
+    color: white; /* Icon color */
+  }
+  
+
+  

@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Product</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()" color="primary"> Cancel </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onConfirm()" color="primary"> Confirm </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="productForm">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <div class="circle">
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+            ></ion-icon>
+          </div>
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()">Add Photo</ion-button>
+            <input #fileInput type="file" accept="image/png, image/jpeg" (change)="addPhoto($event)" style="display:none" />
+         
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 1 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Product Name : </ion-label>
+            <ion-input formControlName="productname" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Reference : </ion-label>
+            <ion-input formControlName="reference" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Image : </ion-label>
+            <ion-input formControlName="image_product" type="text" readonly></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Price : </ion-label>
+            <ion-input formControlName="price" type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description : </ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+          <!-- Add image upload functionality if needed -->
+          <!-- <ion-item>
+            <ion-label>Image</ion-label>
+            <ion-input type="file" (change)="addPhoto($event)"></ion-input>
+          </ion-item> -->
+        </ion-list>
+      </ion-row>
+    </ion-grid>
+    
+  </form>
+</ion-content>

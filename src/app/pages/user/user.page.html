@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ng-container *ngIf="businessOwners.length > 0; else emptyState">
+        Business Owner
+      </ng-container>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openUpdateBusinessOwnerPage()" color="primary"> Edit </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ng-template #emptyState> 
+  <ion-toolbar>
+    <ion-title>
+      No Business Owners Found
+    </ion-title>
+  </ion-toolbar>
+</ng-template>
+
+<ion-content *ngIf="businessOwners.length > 0">
+  <!-- Reactive Form -->
+  <form [formGroup]="businessOwnerForm">
+    <ion-grid>
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="12" class="column-center"> <!-- Adjusted size to 12 to occupy the entire row -->
+          <div class="circle">
+            <img [src]="businessOwnerForm.get('image_owner')?.value" class="contact-image" *ngIf="businessOwnerForm.get('image_owner')?.value" />
+            <ion-icon name="person-circle-outline" class="contact-icon" *ngIf="!businessOwnerForm.get('image_owner')?.value"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+  
+      <!-- Row 1 -->
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Email :</ion-label>
+            <ion-input formControlName="email" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Name :</ion-label>
+            <ion-input formControlName="name" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adresse :</ion-label>
+            <ion-input formControlName="adresse" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone 1 :</ion-label>
+            <ion-input formControlName="telephone1" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone 2 :</ion-label>
+            <ion-input formControlName="telephone2" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Owner Image :</ion-label>
+            <ion-input formControlName="image_owner" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Monthly Fee Paid :</ion-label>
+            <ion-checkbox formControlName="monthly_fee_paid" ></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+</ion-content>
+
+<!-- FAB Button -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="businessOwners.length === 0">
+  <ion-fab-button color="primary" (click)="openBusinessOwnerModal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab> 
+ 

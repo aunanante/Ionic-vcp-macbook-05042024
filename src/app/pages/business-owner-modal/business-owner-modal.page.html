@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Business Owner Form </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()" color="primary"> Cancel </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSubmit()" color="primary"> Done </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="businessOwnerForm">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <div class="circle">
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+            ></ion-icon>
+          </div>
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()">Add Photo</ion-button>
+            <input #fileInput type="file" accept="image/png, image/jpeg" (change)="addPhoto($event)" style="display:none" />
+         
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 1 -->
+      <ion-row>
+        <ion-col size="12">
+          <!-- <ion-item lines="none">
+            <ion-button expand="block" (click)="fileInput.click()">Add Photo</ion-button>
+            <input #fileInput type="file" accept="image/png, image/jpeg" (change)="addPhoto($event)" style="display:none" />
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 1 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Row 3 -->
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Email :</ion-label>
+            <ion-input
+              formControlName="email"
+              readonly="true"
+              [value]="email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Name :</ion-label>
+            <ion-input formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adresse :</ion-label>
+            <ion-input formControlName="adresse"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone 1 :</ion-label>
+            <ion-input formControlName="telephone1"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone 2 :</ion-label>
+            <ion-input formControlName="telephone2"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Owner Image :</ion-label>
+            <ion-input formControlName="image_owner" readonly></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Monthly Fee Paid :</ion-label>
+            <ion-checkbox
+              [checked]="monthly_fee_paid"
+              disabled="true"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

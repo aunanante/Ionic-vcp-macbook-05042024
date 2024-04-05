@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/dashboard/user" text=""></ion-back-button> -->
+      <ion-button (click)="onCancel()" color="primary">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Update Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onUpdate()" color="primary">Update</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="detailForm">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="12" class="column-center">
+          <!-- Adjusted size to 12 to occupy the entire row -->
+          <div class="circle">
+            <img
+              [src]="detailForm.get('image_detail')?.value"
+              class="contact-image"
+              *ngIf="detailForm.get('image_detail')?.value"
+            />
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+              *ngIf="!detailForm.get('image_detail')?.value"
+            ></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()"
+            >Add Photo</ion-button
+          >
+          <input
+            #fileInput
+            type="file"
+            accept="image/png, image/jpeg"
+            (change)="addPhoto($event)"
+            style="display: none"
+          />
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row></ion-row>
+    </ion-grid>
+    
+    <ion-item>
+      <ion-label>Detail Name:</ion-label>
+      <ion-input formControlName="detailname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description:</ion-label>
+      <ion-input formControlName="description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Image:</ion-label>
+      <ion-input formControlName="image_detail" readonly></ion-input>
+    </ion-item>
+    
+   
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="danger" expand="block" (click)="onDelete()">Delete</ion-button>
+  </ion-toolbar>
+</ion-footer>

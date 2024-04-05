@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Commerces</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openUpdateCommerceModal()" color="primary">
+        Edit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> 
+ 
+<ion-content>
+  <!-- List of commerces -->
+  commerces
+  <div scrolly="true" style="max-height: 100px">
+    <div *ngIf="commerces && commerces.length > 0" class="commerce-list">
+      <ion-list>
+        <ion-item *ngFor="let commerce of commerces" [class.selected-commerce]="commerce.id === selectedCommerceId"  (click)="loadCommerceDetails(commerce)">
+          {{ commerce.commercename }}
+        </ion-item>
+        
+      </ion-list>
+    </div>
+  </div>
+  
+
+  <!-- Form for the first commerce -->
+  <div *ngIf="firstCommerce" class="commerce-form">
+    <form [formGroup]="commerceForm">
+      <ion-item>
+        <img [src]="commerceForm.get('image_commerce')?.value" alt="Commerce Image" />
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Commerce Name</ion-label>
+        <ion-input type="text" formControlName="commercename" [readonly]="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Services</ion-label>
+        <ion-textarea formControlName="services" rows="10" style="min-height: 200px" [readonly]="true"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ville</ion-label>
+        <ion-textarea formControlName="ville_id" [readonly]="true"></ion-textarea>
+      </ion-item>
+    </form>
+  </div>
+
+  <!-- Display message when no commerce exists -->
+  <div *ngIf="noCommerceMessage" class="no-commerce-message">
+    <p>{{ noCommerceMessage }}</p>
+  </div>
+
+  <!-- FAB button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCommerceModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

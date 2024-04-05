@@ -1,0 +1,17 @@
+
+div[scrolly="true"] {
+  overflow-y: auto;
+  max-height: 200px; /* This should match the max-height in your HTML */
+}
+
+.commerce-list {
+    padding-bottom: 20px; /* Adjust as needed */
+}
+  
+.commerce-form {
+    padding-top: 20px; /* Adjust as needed */
+}
+  
+.selected-commerce {
+  --ion-item-background: #f0f8ff; /* Light blue-grey color */
+}

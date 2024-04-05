@@ -1,0 +1,7 @@
+{
+  "name": "AIonicVcp31012024",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

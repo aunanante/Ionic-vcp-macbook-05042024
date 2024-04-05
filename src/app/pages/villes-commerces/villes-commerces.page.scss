@@ -1,0 +1,126 @@
+.even-item {
+    --ion-item-background: rgb(156, 218, 243);
+  }
+  
+  .odd-item {
+    --ion-item-background: lightpink;
+  }
+  
+  /* Add a border to list items */
+  ion-item {
+    --ion-item-border-color: #ccc; /* Change to your desired border color */
+  }
+  
+  /* Style the scrollbar */
+  ion-content {
+    --ion-scrollbar-background: #f0f0f0; /* Change to your desired scrollbar background color */
+    --ion-scrollbar-thumb-background: #999; /* Change to your desired scrollbar thumb color */
+  }
+  
+  /* styles.css or styles.scss */
+.ionSelectRight {
+  --ion-item-end: 0; /* Adjust the value as needed */
+}
+
+/* Style the form button container */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+  margin: 10px 0; /* Add margin to the container */
+}
+
+/* Style each button and its tooltip */
+button.tooltip {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Make each button occupy 25% of the container */
+  max-width: 100px; /* Set a maximum width for each button */
+}
+
+/* Style the icon within the button */
+button.tooltip ion-icon {
+  font-size: 36px; /* Adjust the icon size as needed */
+  color: blue; /* Change the icon color to blue */
+}
+
+/* Style the icon within the button */
+button.tooltip ion-icon {
+  font-size: 24px; /* Adjust the icon size as needed (e.g., 24px) */
+  color: blue; /* Change the icon color to blue */
+}
+
+/* Rest of your CSS styles... */
+
+
+/* Show tooltip text on button hover */
+button.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
+/* Style the button text */
+button.tooltip span {
+  font-size: 14px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Style disabled button */
+button.tooltip:disabled {
+  color: #ccc; /* Change the color of the disabled button */
+  cursor: not-allowed;
+}
+
+
+/* styles.scss or your component-specific .scss file */
+.custom-alert-message {
+  /* Add your custom styles here */
+  font-size: 16px;
+  color: #333;
+  /* Add more styles as needed */
+}
+
+ion-item {
+  color: darkblue;
+  background-color: chartreuse;
+}
+
+/* Add this to your CSS file */
+.red-bold-label {
+  font-weight: bold;
+  color: red;
+}
+
+/* Add this to your CSS file */
+.bold-text {
+  font-weight: bold;
+}
+
+.myColor {
+  background-color: aqua;
+}
+
+ion-content{
+  --background:#6018e7;
+}
+
+ion-searchbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+  
+/* Define CSS class for controlling image dimensions */
+.commerce-image {
+  width: 100%; /* Set width to 100% */
+  height: 200px; /* Set a fixed height for consistency */
+  object-fit: contain; /* Maintain aspect ratio and fit within container */
+}
+

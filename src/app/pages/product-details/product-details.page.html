@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="/create-category-modal"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Check if details array is empty -->
+  <ng-container *ngIf="details.length > 0; else noDetails">
+    <!-- List of cards displaying product details -->
+    <ion-card *ngFor="let detail of details">
+      <ion-card-header>
+        <ion-card-title>{{ detail.detailname }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="card-content">
+        <ion-img class="card-image" [src]="detail.image_detail"></ion-img>
+        <p class="description">{{ detail.description }}</p>
+        <!-- Add more detail properties here as needed -->
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <!-- Display message if details array is empty -->
+  <ng-template #noDetails>
+    <ion-card>
+      <ion-card-content>
+        No details available for this product.
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>
+

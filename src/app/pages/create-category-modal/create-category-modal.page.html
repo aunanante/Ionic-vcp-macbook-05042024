@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBackToCategoryPage()" defaultHref="/category-products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let product of products" (click)="openProductDetails(product.id)">
+    <ion-card-header>
+      <ion-card-title>{{ product.productname }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="card-content">
+      <ion-img class="card-image" [src]="product.image_product"></ion-img>
+      <p>Reference: {{ product.reference }}</p>
+      <p>Price: {{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+      <p>Description: {{ product.description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

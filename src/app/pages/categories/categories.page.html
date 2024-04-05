@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Categories</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openUpdateCategoryModal()" color="primary">
+        Edit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar> 
+</ion-header>
+ 
+<ion-content>
+  <ion-grid class="grid-container">
+    <ion-row>
+      <ion-col size="6" class="column">
+        commerces
+      </ion-col>
+      <ion-col size="6" class="column">
+        categories
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- Left column for commerces -->
+      <ion-col size="6" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="commerces.length > 0" class="list">
+            <ion-item *ngFor="let commerce of commerces" class="item" [class.selected-commerce]="commerce.id === selectedCommerceId" (click)="onCommerceClick(commerce.id)">
+              {{ commerce.commercename }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no commerces found -->
+          <div *ngIf="commerces.length === 0" class="no-commerces-message">
+            <p>No commerces found.</p>
+          </div>
+        </div>
+      </ion-col>
+
+      <!-- Vertical border between columns -->
+      <!-- <ion-col size="1" class="vertical-border"></ion-col> -->
+
+      <!-- Right column for categories -->
+      <ion-col size="6" class="column">
+        <div scrolly="true" style="max-height: 100px">
+          <ion-list *ngIf="categories.length > 0" class="list">
+            <ion-item *ngFor="let category of categories" class="item" [class.selected-category]="category.id === selectedCategoryId" (click)="onCategoryClick(category)">
+              {{ category.categoryname }}
+            </ion-item>
+          </ion-list>
+          <!-- Display message if no categories found -->
+          <div *ngIf="categories.length === 0" class="no-categories-message">
+            <p>No categories found.</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Display form for the first category -->
+  <ion-card *ngIf="categoryForm">
+    <ion-card-header>
+      <ion-card-title>Category Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="categoryForm">
+        <ion-item>
+          <!-- <ion-label>Image</ion-label> -->
+          <!-- Use ion-img to display the associated image -->
+          <ion-img [src]="categoryForm.get('image_category')?.value"></ion-img>
+        </ion-item>
+        <ion-item>
+          <ion-label>ID : </ion-label>
+          <ion-input formControlName="id" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Category Name : </ion-label>
+          <ion-input formControlName="categoryname" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Commerce ID : </ion-label>
+          <ion-input formControlName="commerce_id" readonly></ion-input>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card> 
+
+  <!-- Fab button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCommerceCategoriesPage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

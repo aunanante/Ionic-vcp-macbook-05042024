@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/villes-commerces"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="commerce-card">
+    <ion-card-header>
+      <ion-card-title>{{ clickedCommerce.commercename }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>Business Owner</ion-card-subtitle>
+      <p><strong>Name:</strong><br>{{ clickedCommerce.businessOwner.name }}</p>
+      <p><strong>Address:</strong><br>{{ clickedCommerce.businessOwner.adresse }}</p>
+      <p><strong>Email:</strong><br>{{ clickedCommerce.businessOwner.email }}</p>
+      <p><strong>Telephone 1:</strong><br>{{ clickedCommerce.businessOwner.telephone1 }}</p>
+      <p><strong>Telephone 2:</strong><br>{{ clickedCommerce.businessOwner.telephone2 }}</p>
+  
+      <ion-card-subtitle>Commerce Information</ion-card-subtitle>
+      <p><strong>Services:</strong><br>{{ clickedCommerce.services }}</p>
+      <p><strong>Ville Name:</strong><br>{{ clickedCommerce.villeName }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Categories</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let category of categories">
+      <ion-card class="category-card" (click)="goToCreateCategoryModal(category.id)">
+        <ion-img class="category-image" [src]="category.image_category"></ion-img>
+        <ion-card-content>
+          <ion-card-title>{{ category.categoryname }}</ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>  

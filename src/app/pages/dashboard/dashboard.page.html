@@ -1,0 +1,38 @@
+<ion-split-pane contentId="dashboard-content" when="lg">
+  <!-- Left menu (hidden on small screens) -->
+  <ion-menu contentId="dashboard-content" side="start" menuId="dashboard-menu">
+    <ion-header>
+      <ion-toolbar color="success">
+        <ion-title>{{ pageTitle }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="pink">
+      <ion-list>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/villes-commerces']" routerDirection="root">Villes-Commerces</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/user']" (click)="setPageTitle('User'); setSelectedMenuItem('User')" [class.selected-menu-item]="selectedMenuItem === 'User'">User</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/commerces']" (click)="setPageTitle('Commerces'); setSelectedMenuItem('Commerces')" [class.selected-menu-item]="selectedMenuItem === 'Commerces'">Commerces</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/categories']" (click)="setPageTitle('Categories'); setSelectedMenuItem('Categories')" [class.selected-menu-item]="selectedMenuItem === 'Categories'">Categories</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/products']" (click)="setPageTitle('Products'); setSelectedMenuItem('Products')" [class.selected-menu-item]="selectedMenuItem === 'Products'">Products</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/details']" (click)="setPageTitle('Details'); setSelectedMenuItem('Details')" [class.selected-menu-item]="selectedMenuItem === 'Details'">Details</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/payments']" (click)="setPageTitle('Payments'); setSelectedMenuItem('Payments')" [class.selected-menu-item]="selectedMenuItem === 'Payments'">Payments</ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Main content -->
+  <ion-router-outlet id="dashboard-content"></ion-router-outlet>
+</ion-split-pane>

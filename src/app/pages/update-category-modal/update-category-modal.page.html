@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/dashboard/user" text=""></ion-back-button> -->
+      <ion-button (click)="onCancel()" color="primary">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Update Category</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onUpdate()" color="primary">Update</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="categoryForm">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="12" class="column-center">
+          <!-- Adjusted size to 12 to occupy the entire row -->
+          <div class="circle">
+            <img
+              [src]="categoryForm.get('image_category')?.value"
+              class="contact-image"
+              *ngIf="categoryForm.get('image_category')?.value"
+            />
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+              *ngIf="!categoryForm.get('image_category')?.value"
+            ></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()"
+            >Add Photo</ion-button
+          >
+          <input
+            #fileInput
+            type="file"
+            accept="image/png, image/jpeg"
+            (change)="addPhoto($event)"
+            style="display: none"
+          />
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row></ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label>Category Name ; </ion-label>
+      <ion-input formControlName="categoryname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Image : </ion-label>
+      <ion-input formControlName="image_category"></ion-input>
+    </ion-item>
+    <!-- Add other form controls as needed -->
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="danger" expand="block" (click)="onDelete()">Delete</ion-button>
+  </ion-toolbar>
+</ion-footer>

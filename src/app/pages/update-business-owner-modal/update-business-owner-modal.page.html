@@ -1,0 +1,90 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/dashboard/user" text=""></ion-back-button>
+    <ion-button (click)="onCancel()">Cancel</ion-button>
+  </ion-buttons>
+  <ion-title>Update Business Owner</ion-title>
+  <ion-buttons slot="end">
+    <ion-button (click)="onUpdate()">Update</ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <form [formGroup]="businessOwnerForm" (ngSubmit)="onUpdate()">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="12" class="column-center">
+          <!-- Adjusted size to 12 to occupy the entire row -->
+          <div class="circle">
+            <img
+              [src]="businessOwnerForm.get('image_owner')?.value"
+              class="contact-image"
+              *ngIf="businessOwnerForm.get('image_owner')?.value"
+            />
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+              *ngIf="!businessOwnerForm.get('image_owner')?.value"
+            ></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()"
+            >Add Photo</ion-button
+          >
+          <input
+            #fileInput
+            type="file"
+            accept="image/png, image/jpeg"
+            (change)="addPhoto($event)"
+            style="display: none"
+          />
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row> </ion-row>
+      <ion-row></ion-row>
+    </ion-grid>
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input formControlName="adresse" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Telephone 1</ion-label>
+      <ion-input formControlName="telephone1" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Telephone 2</ion-label>
+      <ion-input formControlName="telephone2" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Owner Image :</ion-label>
+      <ion-input formControlName="image_owner" readonly></ion-input>
+    </ion-item>
+    <!-- Add other form fields here -->
+    <!-- <ion-button type="submit" expand="block">Update</ion-button> -->
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="danger" expand="block" (click)="onDelete()">Delete</ion-button>
+  </ion-toolbar>
+</ion-footer>

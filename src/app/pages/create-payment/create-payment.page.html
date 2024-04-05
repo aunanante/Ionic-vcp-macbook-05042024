@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="paymentForm">
+    <ion-item>
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input type="number" formControlName="amount" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Duration (months)</ion-label>
+      <ion-select formControlName="duration_months" interface="popover" (ionChange)="updateAmountAndExpiryDate()">
+        <ion-select-option value="0.1">0.1</ion-select-option>
+        <ion-select-option value="0.5">0.5</ion-select-option>
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="12">12</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="payment-date-label" position="floating">Payment Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm" formControlName="payment_date" readonly></ion-datetime>
+
+    </ion-item>
+    
+    <ion-item>
+      <ion-label class="expiry-date-label" position="floating">Expiry Date</ion-label>
+      <ion-input type="text" formControlName="expiry_date" class="custom-input" readonly></ion-input>
+    </ion-item>
+    
+
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" color="primary">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" color="primary">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

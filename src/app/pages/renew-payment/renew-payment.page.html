@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Renew Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="paymentForm">
+    <ion-item>
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label position="floating">Duration (months)</ion-label>
+      <ion-select formControlName="duration_months" interface="popover" (ionChange)="updateAmountAndExpiryDate()">
+        <ion-select-option *ngFor="let option of durationOptions" [value]="option.value">{{ option.label }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="payment-date-label" position="floating">Payment Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm" formControlName="payment_date" readonly></ion-datetime>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label class="expiry-date-label" position="floating">Expiry Date</ion-label>
+      <ion-input type="text" formControlName="expiry_date" class="custom-input" readonly></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" color="primary">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="renew()" color="primary">Renew</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

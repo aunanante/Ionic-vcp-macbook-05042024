@@ -1,0 +1,34 @@
+div[scrolly="true"] {
+  overflow-y: auto;
+  max-height: 200px; /* This should match the max-height in your HTML */
+}
+
+  
+.grid-container {
+    border: 1px solid #ccc; /* Border around the grid */
+}
+  
+  
+
+
+
+
+.selected-commerce {
+  --ion-item-background: #f0f8ff; /* Light blue-grey color */
+}
+
+ion-item.selected-category {
+  --ion-item-background: #f3e6d5; /* Light brown-grey color */
+}
+
+.selected-product {
+  --ion-item-background: #eee4eb; /* Light blue-grey color */
+}
+
+.selected-detail {
+  --ion-item-background: #e0edf8; /* Light blue-grey color */
+}  
+
+
+
+  

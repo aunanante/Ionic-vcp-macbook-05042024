@@ -1,0 +1,29 @@
+.commerce-card {
+  
+  /* Add padding for spacing */
+ background-color: #fff; /* Set background color if needed */
+ border-radius: 10px; /* Apply border radius for rounded corners */
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for elevation */
+}
+
+
+.category-card {
+  height: 300px; /* Set the desired height for each card */
+  width: 100%; /* Make sure the card takes the full width */
+  display: flex;
+  flex-direction: column;
+}
+
+ion-img {
+  height: 70%; /* Adjust the image height as needed */
+  width: 100%; /* Make sure the image takes the full width of its container */
+}
+
+/* Define CSS class for controlling image dimensions */
+.category-image {
+  width: 100%; /* Set width to 100% */
+  height: 200px; /* Set a fixed height for consistency */
+  object-fit: contain; /* Maintain aspect ratio and fit within container */
+}
+
+

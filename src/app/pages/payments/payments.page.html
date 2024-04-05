@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="latestPayment; else noPaymentFound">
+    <ion-card-content>
+      <!-- Display the payment form -->
+      <form [formGroup]="paymentForm">
+        <ion-item>
+          <ion-label position="stacked" readonly>Amount</ion-label>
+          <ion-input formControlName="amount" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" readonly>Duration (months)</ion-label>
+          <ion-input formControlName="duration_months" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" readonly>Payment Date</ion-label>
+          <ion-input formControlName="payment_date" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" readonly>Expiry Date</ion-label>
+          <ion-input formControlName="expiry_date" readonly></ion-input>
+        </ion-item>
+
+        <!-- Display remaining days -->
+      <ion-item [ngClass]="{'expired': daysRemaining <= 0}">
+        <ion-label position="stacked" color="primary">Days Remaining</ion-label>
+        <ion-input value="{{ daysRemaining <= 0 ? 'Expired' : daysRemaining + ' days' }}" readonly></ion-input>
+      </ion-item>
+        
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #noPaymentFound>
+    <div class="message">
+      No payment found for the business owner.
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="openCreatePaymentModal()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ng-template>
+</ion-content>
+
+<ion-footer *ngIf="latestPayment">
+  <ion-button (click)="openRenewPaymentModal()" expand="block">Renew Payment</ion-button>
+</ion-footer>

@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()" color="primary"> Cancel </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onConfirm()" color="primary"> Confirm </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="detailForm">
+    <ion-grid>
+      <!-- Row 1 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <div class="circle">
+            <ion-icon
+              name="person-circle-outline"
+              class="contact-icon"
+            ></ion-icon>
+          </div>
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Row 2 -->
+      <ion-row>
+        <!-- Column 1 -->
+        <ion-col size="4"></ion-col>
+        <!-- Column 2 -->
+        <ion-col size="4" class="column-center">
+          <ion-button expand="block" (click)="fileInput.click()">Add Photo</ion-button>
+            <input #fileInput type="file" accept="image/png, image/jpeg" (change)="addPhoto($event)" style="display:none" />
+         
+        </ion-col>
+        <!-- Column 3 -->
+        <ion-col size="4"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 1 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <!-- Empty Row 2 -->
+      <ion-row>
+        <ion-col size="12"></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-list>
+          <ion-item>
+            <ion-label>Detail Name:</ion-label>
+            <ion-input formControlName="detailname"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>Description:</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>Image Detail:</ion-label>
+            <ion-input formControlName="image_detail" readonly></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+    </ion-grid>
+    <!-- Other form fields go here -->
+  </form>
+  
+</ion-content>
